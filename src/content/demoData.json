@@ -1,0 +1,33 @@
+{
+    "codices": [
+        {
+            "id": 1,
+            "content": "This is the first codex page.",
+            "notes": []
+        },
+        {
+            "id": 2,
+            "content": "The snarglethorp is a beastly beast.",
+            "notes": [1, 2, 3]
+        },
+        {
+            "id": 3,
+            "content": "The bigglebob is a meek little monster.",
+            "notes": [3]
+        }
+    ],
+    "notes": [
+        {
+            "id": 1,
+            "content": "Snarglethorps like food"
+        },
+        {
+            "id": 2,
+            "content": "Oceanic climate"
+        },
+        {
+            "id": 3,
+            "content": "Snarglethorps don't like to play with Biggibobs"
+        }
+    ]
+}
