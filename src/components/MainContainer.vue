@@ -11,6 +11,7 @@
       </nav>
     </header>
     <main>
+      <h1>This is the container for the AthenaDocs demo</h1>
       <router-view></router-view>
     </main>
   </div>

@@ -1,12 +1,38 @@
 <template>
   <div>
-    Codices Page
+    <h2>Codices Page</h2>
+    <div class="codices">
+      <CodexPage v-for="codex in codices" v-bind="codex" :key="codex.id"/>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import content from '../../content/demoData.json'
+import CodexPage from '../CodexPage'
 
+export default {
+  components: {
+    CodexPage
+  },
+  data () {
+    return {
+      codices: content.codices.map(codex => {
+        return {
+          ...codex,
+          notes: codex.notes
+            .map(noteId => {
+              return content.notes.find(note => note.id === noteId)
+            })
+            .filter(note => note !== undefined)
+        }
+      }),
+      notes: content.notes
+    }
+  },
+  methods: {
+    assignNotes () {}
+  }
 }
 </script>
 
