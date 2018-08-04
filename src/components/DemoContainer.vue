@@ -2,18 +2,18 @@
     <div>
         <h1>This is the container for the AthenaDocs demo</h1>
         <div class="codices">
-            <CodexPage v-for="codex in codices" v-bind="codex" :key="codex.id"/>
+            <CodexView v-for="codex in codices" v-bind="codex" :key="codex.id"/>
         </div>
     </div>
 </template>
 
 <script>
 import content from '../content/demoData.json'
-import CodexPage from './CodexPage'
+import CodexView from './CodexView'
 
 export default {
   components: {
-    CodexPage
+    CodexView
   },
   data () {
     return {

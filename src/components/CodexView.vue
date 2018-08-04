@@ -15,7 +15,7 @@
 import CodexNotes from './CodexNotes'
 
 export default {
-  name: 'CodexPage',
+  name: 'CodexView',
   components: {
     CodexNotes
   },

@@ -2,18 +2,22 @@
   <div>
     <h2>Codices Page</h2>
     <div class="codices">
-      <CodexPage v-for="codex in codices" v-bind="codex" :key="codex.id"/>
+      <div v-for="codex in codices" :key="codex.id">
+        <router-link :to="`/codex/${codex.id}`">
+          <CodexView v-bind="codex"/>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import content from '../../content/demoData.json'
-import CodexPage from '../CodexPage'
+import CodexView from '../CodexView'
 
 export default {
   components: {
-    CodexPage
+    CodexView
   },
   data () {
     return {
