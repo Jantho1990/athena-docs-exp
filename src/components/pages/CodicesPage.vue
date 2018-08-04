@@ -3,9 +3,7 @@
     <h2>Codices Page</h2>
     <div class="codices">
       <div v-for="codex in codices" :key="codex.id">
-        <router-link :to="`/codex/${codex.id}`">
-          <CodexView v-bind="codex"/>
-        </router-link>
+        <CodexPreview v-bind="codex"/>
       </div>
     </div>
   </div>
@@ -13,11 +11,11 @@
 
 <script>
 import content from '../../content/demoData.json'
-import CodexView from '../CodexView'
+import CodexPreview from '../CodexPreview'
 
 export default {
   components: {
-    CodexView
+    CodexPreview
   },
   data () {
     return {
