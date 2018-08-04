@@ -15,24 +15,24 @@ export default {
   components: {
     CodexPage
   },
-    data () {
+  data () {
+    return {
+      codices: content.codices.map(codex => {
         return {
-            codices: content.codices.map(codex => {
-                return {
-                    ...codex,
-                    notes: codex.notes.map(noteId => {
-                        return content.notes.find(note => note.id === noteId)
-                    }).filter(note => note !== undefined)
-                }
-            }),
-            notes: content.notes
+          ...codex,
+          notes: codex.notes
+            .map(noteId => {
+              return content.notes.find(note => note.id === noteId)
+            })
+            .filter(note => note !== undefined)
         }
-    },
-    methods: {
-        assignNotes () {
-
-        }
+      }),
+      notes: content.notes
     }
+  },
+  methods: {
+    assignNotes () {}
+  }
 }
 </script>
 

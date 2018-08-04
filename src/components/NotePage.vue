@@ -7,18 +7,17 @@
 
 <script>
 export default {
-    props: {
-        content: {
-            type: String,
-            default: 'Filler content'
-        },
-        id: {
-            type: Number
-        }
+  props: {
+    content: {
+      type: String,
+      default: 'Filler content'
+    },
+    id: {
+      type: Number
     }
+  }
 }
 </script>
 
 <style>
-
 </style>
