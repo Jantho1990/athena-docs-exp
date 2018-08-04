@@ -1,12 +1,35 @@
 <template>
   <div>
-    Notes Page
+    <h2>Notes Page</h2>
+    <div class="notes">
+      <NotePage v-for="note in notes" v-bind="note" :key="note.id"/>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import content from '../../content/demoData.json'
+import NotePage from '../NotePage'
 
+export default {
+  components: {
+    NotePage
+  },
+  data () {
+    return {
+      codices: content.codices.map(codex => {
+        let { id, title } = codex
+        return {
+          id,
+          title
+        }
+      }),
+      notes: content.notes
+    }
+  },
+  methods: {
+    assignNotes () {}
+  }
 }
 </script>
 
