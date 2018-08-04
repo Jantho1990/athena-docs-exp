@@ -37,5 +37,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.codex-container {
+  border: 1px solid hsl(0, 50%, 50%);
+  background: hsl(0, 0%, 90%);
+  display: grid;
+  grid-template-areas:
+    "codex-left codex-right";
+  .codex {
+    grid-area: codex-left;
+  }
+  .codex-notes {
+    grid-area: codex-right;
+  }
+}
 </style>
