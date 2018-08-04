@@ -7,6 +7,7 @@
 
 <script>
 export default {
+  name: 'NoteView',
   props: {
     content: {
       type: String,

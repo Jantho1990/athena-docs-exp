@@ -6,19 +6,19 @@
         v-for="note in notes"
         :key="note.id"
       >
-        <NotePage v-bind="note"/>
+        <NoteView v-bind="note"/>
       </li>
     </ul>
   </aside>
 </template>
 
 <script>
-import NotePage from './NotePage'
+import NoteView from './NoteView'
 
 export default {
-  name: 'CodexNotes',
+  name: 'NotesContainer',
   components: {
-    NotePage
+    NoteView
   },
   props: {
     notes: {

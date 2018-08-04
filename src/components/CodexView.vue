@@ -4,7 +4,7 @@
         <h2>{{ title }}</h2>
         <p>{{ content }}</p>
       </div>
-      <CodexNotes
+      <NotesContainer
         class="codex-notes"
         :notes="notes"
       />
@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import CodexNotes from './CodexNotes'
+import NotesContainer from './NotesContainer'
 
 export default {
   name: 'CodexView',
   components: {
-    CodexNotes
+    NotesContainer
   },
   props: {
     content: {
