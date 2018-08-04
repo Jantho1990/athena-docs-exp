@@ -1,7 +1,7 @@
 <template>
     <div class="codex-container">
       <div class="codex">
-        <h2>This is a codex page</h2>
+        <h2>{{ title }}</h2>
         <p>{{ content }}</p>
       </div>
       <CodexNotes
@@ -32,6 +32,10 @@ export default {
       default () {
         return []
       }
+    },
+    title: {
+      type: String,
+      default: 'Codex Page'
     }
   }
 }

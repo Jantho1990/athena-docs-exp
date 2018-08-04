@@ -5,6 +5,8 @@
         <ul>
           <li>
             <router-link to="/codices">Codices</router-link>
+          </li>
+          <li>
             <router-link to="/notes">Notes</router-link>
           </li>
         </ul>
@@ -18,13 +20,16 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'MainContainer'
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+nav {
+  li {
+    display: inline;
+    margin: 0 1em;
+  }
+}
 </style>
