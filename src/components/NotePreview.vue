@@ -1,13 +1,15 @@
 <template>
   <div class="note">
-    <h3>{{ title }}</h3>
-    <p>{{ content }}</p>
+    <router-link :to="`/notes/${id}`">
+      <h3>{{ title }}</h3>
+    </router-link>
+    <p>{{ content.substr(0, 50) }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'NoteView',
+  name: 'NotePreview',
   props: {
     content: {
       type: String,

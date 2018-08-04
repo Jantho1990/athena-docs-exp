@@ -6,19 +6,19 @@
         v-for="note in notes"
         :key="note.id"
       >
-        <NoteView v-bind="note"/>
+        <NotePreview v-bind="note"/>
       </li>
     </ul>
   </aside>
 </template>
 
 <script>
-import NoteView from './NoteView'
+import NotePreview from './NotePreview'
 
 export default {
   name: 'NotesContainer',
   components: {
-    NoteView
+    NotePreview
   },
   props: {
     notes: {

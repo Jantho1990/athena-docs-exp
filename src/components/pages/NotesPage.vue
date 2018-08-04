@@ -2,18 +2,18 @@
   <div>
     <h2>Notes Page</h2>
     <div class="notes">
-      <NoteView v-for="note in notes" v-bind="note" :key="note.id"/>
+      <NotePreview v-for="note in notes" v-bind="note" :key="note.id"/>
     </div>
   </div>
 </template>
 
 <script>
 import content from '../../content/demoData.json'
-import NoteView from '../NoteView'
+import NotePreview from '../NotePreview'
 
 export default {
   components: {
-    NoteView
+    NotePreview
   },
   data () {
     return {
