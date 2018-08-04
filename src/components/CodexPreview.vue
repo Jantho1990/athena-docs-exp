@@ -1,7 +1,7 @@
 <template>
     <div class="codex-container">
       <div class="codex">
-        <router-link :to="`/codex/${id}`">
+        <router-link :to="`/codices/${id}`">
           <h2>{{ title }}</h2>
         </router-link>
         <p>{{ content.substr(0, 20) }}...</p>

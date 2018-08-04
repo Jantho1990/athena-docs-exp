@@ -9,8 +9,8 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/codices', component: CodicesPage },
+  { path: '/codices/:id', component: CodexPage },
   { path: '/notes', component: NotesPage },
-  { path: '/codex/:id', component: CodexPage },
   { path: '/notes/:id', component: NotePage }
 ]
 
