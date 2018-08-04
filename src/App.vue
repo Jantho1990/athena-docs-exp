@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <DemoContainer/>
+    <main-container/>
   </div>
 </template>
 
 <script>
 import DemoContainer from './components/DemoContainer'
+import MainContainer from './components/MainContainer'
 
 export default {
   name: 'App',
   components: {
-    DemoContainer
+    DemoContainer,
+    MainContainer
   }
 }
 </script>
