@@ -19,7 +19,17 @@ const store = new Vuex.Store({
           .filter(note => note !== undefined)
       }
     }),
-    notes: state => state.notes
+    codex: state => id => state.codices.filter(codex => codex.id === id)
+      .map(codex => {
+        return {
+          ...codex,
+          notes: codex.notes.map(noteId => {
+            return state.notes.find(note => note.id === noteId)
+          })
+        }
+      }),
+    notes: state => state.notes,
+    note: state => id => state.notes.filter(note => note.id === id)
   }
 })
 

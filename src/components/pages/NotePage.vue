@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import content from '../../content/demoData.json'
 import NoteView from '../NoteView'
 
 export default {
@@ -14,8 +13,7 @@ export default {
   },
   computed: {
     note () {
-      // TODO: Figure out why this needs to be a computed
-      return content.notes.filter(note => note.id === this.id)
+      return this.$store.getters.note(this.id)
     }
   },
   data () {
