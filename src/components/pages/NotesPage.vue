@@ -8,24 +8,21 @@
 </template>
 
 <script>
-import content from '../../content/demoData.json'
+import { mapGetters } from 'vuex'
 import NotePreview from '../NotePreview'
 
 export default {
   components: {
     NotePreview
   },
+  computed: {
+    ...mapGetters([
+      'codices',
+      'notes'
+    ])
+  },
   data () {
-    return {
-      codices: content.codices.map(codex => {
-        let { id, title } = codex
-        return {
-          id,
-          title
-        }
-      }),
-      notes: content.notes
-    }
+    return {}
   },
   methods: {
     assignNotes () {}

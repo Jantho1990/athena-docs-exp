@@ -10,27 +10,21 @@
 </template>
 
 <script>
-import content from '../../content/demoData.json'
+import { mapGetters } from 'vuex'
 import CodexPreview from '../CodexPreview'
 
 export default {
   components: {
     CodexPreview
   },
+  computed: {
+    ...mapGetters([
+      'codices',
+      'notes'
+    ])
+  },
   data () {
-    return {
-      codices: content.codices.map(codex => {
-        return {
-          ...codex,
-          notes: codex.notes
-            .map(noteId => {
-              return content.notes.find(note => note.id === noteId)
-            })
-            .filter(note => note !== undefined)
-        }
-      }),
-      notes: content.notes
-    }
+    return {}
   },
   methods: {
     assignNotes () {}
