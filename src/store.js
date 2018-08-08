@@ -42,15 +42,20 @@ const store = new Vuex.Store({
   },
   mutations: {
     [INCREMENT_ID] (state, increment) {
-      return ++state[`${increment}Id`]
+      state[`${increment}Id`]++
     },
     [STORE_CODEX] (state, payload) {
       const { codex } = payload
+      // this.commit(INCREMENT_ID, 'codex')
       const codexEntry = {
         ...codex,
-        id: this.commit(INCREMENT_ID, 'codex')
+        id: ++state.codexId
       }
-      state.codices.push(codexEntry)
+      const codices = [
+        ...state.codices,
+        codexEntry
+      ]
+      state.codices = codices
     }
   },
   actions: {
