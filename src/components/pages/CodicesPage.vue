@@ -3,7 +3,7 @@
     <h2>Codices Page</h2>
     <div class="codices">
       <div class="codex-form-container">
-        <CodexForm/>
+        <CodexForm :notes="notes"/>
       </div>
       <div v-for="codex in codices" :key="codex.id">
         <CodexPreview v-bind="codex"/>

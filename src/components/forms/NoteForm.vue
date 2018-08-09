@@ -25,11 +25,11 @@ export default {
   },
   methods: {
     submitNote () {
-      let { title_: title, content_: content, selectedCodices } = this
+      let { title_: title, content_: content, selectedCodices: codices } = this
       const note = {
         title,
         content,
-        codices: selectedCodices
+        codices
       }
       const { dispatch } = this.$store
       dispatch(ADD_NOTE, {

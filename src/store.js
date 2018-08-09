@@ -59,6 +59,17 @@ const store = new Vuex.Store({
       ]
 
       state.codices = codices
+
+      codex.notes.forEach(noteId => {
+        const n = state.notes.findIndex(nt => nt.id === noteId)
+        state.notes[n] = {
+          ...state.notes[n],
+          notes: [
+            ...state.notes[n].notes,
+            codexEntry.id
+          ]
+        }
+      })
     },
     [STORE_NOTE] (state, payload) {
       const { note } = payload
