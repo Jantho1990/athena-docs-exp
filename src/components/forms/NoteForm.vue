@@ -43,5 +43,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.note-form {
+    max-width: 20rem;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+}
 </style>
