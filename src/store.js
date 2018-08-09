@@ -74,6 +74,17 @@ const store = new Vuex.Store({
       ]
 
       state.notes = notes
+
+      note.codices.forEach(codexId => {
+        const c = state.codices.findIndex(cdx => cdx.id === codexId)
+        state.codices[c] = {
+          ...state.codices[c],
+          notes: [
+            ...state.codices[c].notes,
+            noteEntry.id
+          ]
+        }
+      })
     }
   },
   actions: {

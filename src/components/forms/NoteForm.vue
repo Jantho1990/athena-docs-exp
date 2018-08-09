@@ -2,6 +2,12 @@
   <div class="note-form">
     <input type="text" name="title" v-model="title_">
     <textarea name="content" id="" v-model="content_"></textarea>
+    <select name="codices" v-model="selectedCodices" multiple>
+        <option value="-1"><em>none</em></option>
+        <option :value="codex.id" v-for="codex in codices" :key="`noteform-${codex.id}`">
+            {{ codex.title }}
+        </option>
+    </select>
     <button @click="submitNote">Add Note</button>
   </div>
 </template>
@@ -13,16 +19,17 @@ export default {
   data () {
     return {
       title_: this.title,
-      content_: this.content
+      content_: this.content,
+      selectedCodices: []
     }
   },
   methods: {
     submitNote () {
-      let { title_: title, content_: content } = this
+      let { title_: title, content_: content, selectedCodices } = this
       const note = {
         title,
         content,
-        notes: []
+        codices: selectedCodices
       }
       const { dispatch } = this.$store
       dispatch(ADD_NOTE, {
@@ -38,6 +45,12 @@ export default {
     content: {
       type: String,
       default: ''
+    },
+    codices: {
+      type: Array,
+      default () {
+        return []
+      }
     }
   }
 }

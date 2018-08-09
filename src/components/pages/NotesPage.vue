@@ -3,7 +3,7 @@
     <h2>Notes Page</h2>
     <div class="notes">
       <div class="note-form-container">
-        <NoteForm/>
+        <NoteForm :codices="codices"/>
       </div>
       <NotePreview v-for="note in notes" v-bind="note" :key="note.id"/>
     </div>
