@@ -7,9 +7,11 @@ Vue.use(Vuex)
 // Mutations
 const INCREMENT_ID = 'INCREMENT_ID'
 const STORE_CODEX = 'STORE_CODEX'
+const STORE_NOTE = 'STORE_NOTE'
 
 // Actions
 export const ADD_CODEX = 'ADD_CODEX'
+export const ADD_NOTE = 'ADD_NOTE'
 
 const store = new Vuex.Store({
   state: {
@@ -55,7 +57,23 @@ const store = new Vuex.Store({
         ...state.codices,
         codexEntry
       ]
+
       state.codices = codices
+    },
+    [STORE_NOTE] (state, payload) {
+      const { note } = payload
+
+      const noteEntry = {
+        ...note,
+        id: ++state.noteId
+      }
+
+      const notes = [
+        ...state.notes,
+        noteEntry
+      ]
+
+      state.notes = notes
     }
   },
   actions: {
@@ -63,6 +81,12 @@ const store = new Vuex.Store({
       const { codex } = payload
       if (codex) {
         commit(STORE_CODEX, { codex: {...codex} })
+      }
+    },
+    [ADD_NOTE] ({ commit }, payload) {
+      const { note } = payload
+      if (note) {
+        commit(STORE_NOTE, { note: {...note} })
       }
     }
   }
