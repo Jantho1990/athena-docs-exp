@@ -1,16 +1,19 @@
 <template>
   <div class="codex-page">
-    <CodexView v-bind="codex"/>
+    <CodexView v-if="!editModeOn" v-bind="codex"/>
+    <CodexViewForm v-if="editModeOn" v-bind="codex"/>
   </div>
 </template>
 
 <script>
 import CodexView from '../CodexView'
+import CodexViewForm from '../forms/CodexViewForm'
 
 export default {
   name: 'CodexPage',
   components: {
-    CodexView
+    CodexView,
+    CodexViewForm
   },
   computed: {
     codex () {
@@ -19,6 +22,7 @@ export default {
   },
   data () {
     return {
+      editModeOn: true,
       id: Number(this.$route.params.id)
     }
   }
