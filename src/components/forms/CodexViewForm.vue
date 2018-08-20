@@ -9,7 +9,13 @@
           {{ title }}
         </h2>
 
-        <p>{{ content }}</p>
+        <p
+          data-input-name="content"
+          contenteditable="true"
+          @input="updateCodex"
+        >
+          {{ content }}
+        </p>
       </div>
       <NotesContainer
         class="codex-notes"
@@ -20,7 +26,6 @@
 
 <script>
 import {
-  ADD_CODEX,
   EDIT_CODEX
 } from '../../store'
 import NotesContainer from '../NotesContainer'
@@ -42,18 +47,6 @@ export default {
 
       const { dispatch } = this.$store
       dispatch(EDIT_CODEX, {
-        codex
-      })
-    },
-    submitCodex () {
-      let { title_: title, content_: content, selectedNotes: notes } = this
-      const codex = {
-        title,
-        content,
-        notes
-      }
-      const { dispatch } = this.$store
-      dispatch(ADD_CODEX, {
         codex
       })
     }
