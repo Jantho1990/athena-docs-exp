@@ -4,7 +4,7 @@
         <h2
           data-input-name="title"
           contenteditable="true"
-          @input="updateCodex"
+          @blur="updateCodex"
         >
           {{ title }}
         </h2>
@@ -12,7 +12,7 @@
         <p
           data-input-name="content"
           contenteditable="true"
-          @input="updateCodex"
+          @blur="updateCodex"
         >
           {{ content }}
         </p>

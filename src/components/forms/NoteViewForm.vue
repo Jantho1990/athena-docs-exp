@@ -4,7 +4,7 @@
         <h3
           data-input-name="title"
           contenteditable="true"
-          @input="updateNote"
+          @blur="updateNote"
         >
           {{ title }}
         </h3>
@@ -12,7 +12,7 @@
         <p
           data-input-name="content"
           contenteditable="true"
-          @input="updateNote"
+          @blur="updateNote"
         >
           {{ content }}
         </p>
