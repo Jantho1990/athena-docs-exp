@@ -9,11 +9,13 @@ const INCREMENT_ID = 'INCREMENT_ID'
 const STORE_CODEX = 'STORE_CODEX'
 const UPDATE_CODEX = 'UPDATE_CODEX'
 const STORE_NOTE = 'STORE_NOTE'
+const UPDATE_NOTE = 'UPDATE_NOTE'
 
 // Actions
 export const ADD_CODEX = 'ADD_CODEX'
 export const EDIT_CODEX = 'EDIT_CODEX'
 export const ADD_NOTE = 'ADD_NOTE'
+export const EDIT_NOTE = 'EDIT_NOTE'
 
 const store = new Vuex.Store({
   state: {
@@ -121,6 +123,29 @@ const store = new Vuex.Store({
           ]
         }
       })
+    },
+    [UPDATE_NOTE] (state, payload) {
+      const { note } = payload
+
+      const n = state.notes.findIndex(n => n.id === note.id)
+
+      Vue.set(state.notes, n, {
+        ...state.notes[n],
+        ...note
+      })
+
+      if (note.codices) {
+        note.codicies.forEach(codexId => {
+          const c = state.codices.findIndex(ct => ct.id === codexId)
+          state.codices[c] = {
+            ...state.codices[c],
+            codices: [
+              ...state.codices[c].codices,
+              note.id
+            ]
+          }
+        })
+      }
     }
   },
   actions: {
@@ -140,6 +165,12 @@ const store = new Vuex.Store({
       const { codex } = payload
       if (codex) {
         commit(UPDATE_CODEX, { codex: { ...codex } })
+      }
+    },
+    [EDIT_NOTE] ({ commit }, payload) {
+      const { note } = payload
+      if (note) {
+        commit(UPDATE_NOTE, { note: { ...note } })
       }
     }
   }
