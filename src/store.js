@@ -8,14 +8,18 @@ Vue.use(Vuex)
 const INCREMENT_ID = 'INCREMENT_ID'
 const STORE_CODEX = 'STORE_CODEX'
 const UPDATE_CODEX = 'UPDATE_CODEX'
+const DESTROY_CODEX = 'DESTROY_CODEX'
 const STORE_NOTE = 'STORE_NOTE'
 const UPDATE_NOTE = 'UPDATE_NOTE'
+const DESTROY_NOTE = 'DESTROY_NOTE'
 
 // Actions
 export const ADD_CODEX = 'ADD_CODEX'
 export const EDIT_CODEX = 'EDIT_CODEX'
+export const DELETE_CODEX = 'DELETE_CODEX'
 export const ADD_NOTE = 'ADD_NOTE'
 export const EDIT_NOTE = 'EDIT_NOTE'
+export const DELETE_NOTE = 'DELETE_NOTE'
 
 const store = new Vuex.Store({
   state: {
@@ -98,6 +102,18 @@ const store = new Vuex.Store({
         })
       }
     },
+    [DESTROY_CODEX] (state, payload) {
+      const { id } = payload
+
+      state.codices = state.codices.filter(codexId => codexId !== id)
+
+      state.notes = state.notes.map(note => {
+        return {
+          ...note,
+          codices: note.codices.filter(c => c !== id)
+        }
+      })
+    },
     [STORE_NOTE] (state, payload) {
       const { note } = payload
 
@@ -146,6 +162,18 @@ const store = new Vuex.Store({
           }
         })
       }
+    },
+    [DESTROY_NOTE](state, payload) {
+      const { id } = payload
+
+      state.notes = state.notes.filter(codexId => codexId !== id)
+
+      state.codices = state.codices.map(codex => {
+        return {
+          ...codex,
+          notes: codex.notes.filter(n => n !== id)
+        }
+      })
     }
   },
   actions: {
@@ -171,6 +199,18 @@ const store = new Vuex.Store({
       const { note } = payload
       if (note) {
         commit(UPDATE_NOTE, { note: { ...note } })
+      }
+    },
+    [DELETE_CODEX] ({ commit }, payload) {
+      const { id } = payload
+      if (id) {
+        commit(DESTROY_CODEX, { id })
+      }
+    },
+    [DELETE_NOTE] ({ commit }, payload) {
+      const { id } = payload
+      if (id) {
+        commit(DESTROY_NOTE, { id })
       }
     }
   }
