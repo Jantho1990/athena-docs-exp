@@ -34,7 +34,7 @@ export default {
 
       const note = {
         id: this.id,
-        [inputName]: textContent
+        [inputName]: textContent.trim()
       }
 
       const { dispatch } = this.$store
