@@ -105,12 +105,12 @@ const store = new Vuex.Store({
     [DESTROY_CODEX] (state, payload) {
       const { id } = payload
 
-      state.codices = state.codices.filter(codexId => codexId !== id)
+      state.codices = state.codices.filter(codex => codex.id !== id)
 
       state.notes = state.notes.map(note => {
         return {
           ...note,
-          codices: note.codices.filter(c => c !== id)
+          codices: note.codices ? note.codices.filter(c => c !== id) : []
         }
       })
     },
@@ -163,15 +163,15 @@ const store = new Vuex.Store({
         })
       }
     },
-    [DESTROY_NOTE](state, payload) {
+    [DESTROY_NOTE] (state, payload) {
       const { id } = payload
 
-      state.notes = state.notes.filter(codexId => codexId !== id)
+      state.notes = state.notes.filter(note => note.id !== id)
 
       state.codices = state.codices.map(codex => {
         return {
           ...codex,
-          notes: codex.notes.filter(n => n !== id)
+          notes: codex.notes ? codex.notes.filter(n => n !== id) : []
         }
       })
     }
