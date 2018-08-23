@@ -1,5 +1,11 @@
 <template>
     <div class="codex-container">
+      <delete-button
+        :action="action"
+        :id="id"
+      >
+        Delete
+      </delete-button>
       <div class="codex">
         <h2>{{ title }}</h2>
         <p>{{ content }}</p>
@@ -12,12 +18,20 @@
 </template>
 
 <script>
+import { DELETE_CODEX } from '../store'
+import DeleteButton from './DeleteButtonVuex'
 import NotesContainer from './NotesContainer'
 
 export default {
   name: 'CodexView',
   components: {
+    DeleteButton,
     NotesContainer
+  },
+  data () {
+    return {
+      action: DELETE_CODEX
+    }
   },
   props: {
     content: {

@@ -1,6 +1,14 @@
 <template>
     <div class="codex-container">
       <div class="codex">
+        <delete-button
+          class="codex-delete"
+          :action="action"
+          :callback="redirectFromPage"
+          :id="id"
+        >
+          Delete
+        </delete-button>
         <h2
           data-input-name="title"
           contenteditable="true"
@@ -26,16 +34,27 @@
 
 <script>
 import {
+  DELETE_CODEX,
   EDIT_CODEX
 } from '../../store'
+import DeleteButton from '../DeleteButtonVuex'
 import NotesContainer from '../NotesContainer'
 
 export default {
   name: 'CodexViewForm',
   components: {
+    DeleteButton,
     NotesContainer
   },
+  data () {
+    return {
+      action: DELETE_CODEX
+    }
+  },
   methods: {
+    redirectFromPage () {
+      this.$router.push('/codices')
+    },
     updateCodex (e) {
       const { textContent, dataset: { inputName } } = e.target
       console.log(textContent, inputName)
