@@ -4,7 +4,13 @@
         <router-link :to="`/codices/${id}`" class="codex-title">
           <h2>{{ title }}</h2>
         </router-link>
-          <button class="codex-delete" @click="deleteCodex">Delete</button>
+          <!-- <button class="codex-delete" @click="deleteCodex">Delete</button> -->
+          <delete-button
+            :action="action"
+            :id="id"
+          >
+            Delete
+          </delete-button>
         <p class="codex-content">{{ content.substr(0, 20) }}...</p>
       </div>
       <div class="codex-notes">
@@ -19,9 +25,18 @@
 
 <script>
 import { DELETE_CODEX } from '../store'
+import DeleteButton from './DeleteButtonVuex'
 
 export default {
   name: 'CodexPreview',
+  components: {
+    DeleteButton
+  },
+  data () {
+    return {
+      action: DELETE_CODEX
+    }
+  },
   methods: {
     deleteCodex () {
       const { id } = this
