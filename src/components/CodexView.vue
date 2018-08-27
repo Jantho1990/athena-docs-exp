@@ -3,6 +3,7 @@
       <delete-button
         :action="action"
         :id="id"
+        :redirect="'/codices'"
       >
         Delete
       </delete-button>

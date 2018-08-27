@@ -4,8 +4,8 @@
         <delete-button
           class="codex-delete"
           :action="action"
-          :callback="redirectFromPage"
           :id="id"
+          :redirect="'/codices'"
         >
           Delete
         </delete-button>

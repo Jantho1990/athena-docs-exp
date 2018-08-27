@@ -9,11 +9,17 @@ export default {
   name: 'DeleteButtonVuex',
   methods: {
     deleteAction () {
-      const { id, action, callback } = this
+      const { id, action, callback, redirect } = this
       const { dispatch } = this.$store
+
       dispatch(action, { id })
+
       if (callback !== null) {
         callback()
+      }
+
+      if (redirect !== null) {
+        this.$router.push(redirect)
       }
     }
   },
