@@ -1,5 +1,12 @@
 <template>
     <div class="note-container">
+      <delete-button
+        :action="action"
+        :id="id"
+        :redirect="'/notes'"
+      >
+        Delete Note
+      </delete-button>
       <div class="note">
         <h3
           data-input-name="title"
@@ -22,15 +29,24 @@
 
 <script>
 import {
+  DELETE_NOTE,
   EDIT_NOTE
 } from '../../store'
+import DeleteButton from '../DeleteButtonVuex'
 
 export default {
   name: 'NoteViewForm',
+  components: {
+    DeleteButton
+  },
+  data () {
+    return {
+      action: DELETE_NOTE
+    }
+  },
   methods: {
     updateNote (e) {
       const { textContent, dataset: { inputName } } = e.target
-      console.log(textContent, inputName)
 
       const note = {
         id: this.id,

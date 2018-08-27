@@ -1,13 +1,31 @@
 <template>
   <div class="note">
+    <delete-button
+      :action="action"
+      :id="id"
+      :redirect="'/notes'"
+    >
+      Delete Note
+    </delete-button>
     <h3>{{ title }}</h3>
     <p>{{ content }}</p>
   </div>
 </template>
 
 <script>
+import { DELETE_NOTE } from '../store'
+import DeleteButton from './DeleteButtonVuex'
+
 export default {
   name: 'NoteView',
+  components: {
+    DeleteButton
+  },
+  data () {
+    return {
+      action: DELETE_NOTE
+    }
+  },
   props: {
     content: {
       type: String,

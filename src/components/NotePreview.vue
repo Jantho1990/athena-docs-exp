@@ -1,5 +1,11 @@
 <template>
   <div class="note">
+    <delete-button
+      :action="action"
+      :id="id"
+    >
+      Delete Note
+    </delete-button>
     <router-link :to="`/notes/${id}`">
       <h3>{{ title }}</h3>
     </router-link>
@@ -8,8 +14,19 @@
 </template>
 
 <script>
+import { DELETE_NOTE } from '../store'
+import DeleteButton from './DeleteButtonVuex'
+
 export default {
   name: 'NotePreview',
+  components: {
+    DeleteButton
+  },
+  data () {
+    return {
+      action: DELETE_NOTE
+    }
+  },
   props: {
     content: {
       type: String,
