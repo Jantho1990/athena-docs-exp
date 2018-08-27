@@ -6,7 +6,11 @@
         v-for="note in notes"
         :key="note.id"
       >
-        <NotePreview v-bind="note"/>
+        <NotePreview v-bind="note">
+          <template slot="action-buttons">
+            <button>Placeholder Remove Note</button>
+          </template>
+        </NotePreview>
       </li>
     </ul>
   </aside>

@@ -5,18 +5,30 @@
       <div class="note-form-container">
         <NoteForm :codices="codices"/>
       </div>
-      <NotePreview v-for="note in notes" v-bind="note" :key="note.id"/>
+      <NotePreview v-for="note in notes" v-bind="note" :key="note.id">
+        <template slot="action-buttons">
+          <delete-button
+            :action="deleteAction"
+            :id="note.id"
+          >
+            Delete Note
+          </delete-button>
+        </template>
+      </NotePreview>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import { DELETE_NOTE } from '../../store'
+import DeleteButton from '../DeleteButtonVuex'
 import NoteForm from '../forms/NoteForm'
 import NotePreview from '../NotePreview'
 
 export default {
   components: {
+    DeleteButton,
     NoteForm,
     NotePreview
   },
@@ -27,7 +39,9 @@ export default {
     ])
   },
   data () {
-    return {}
+    return {
+      deleteAction: DELETE_NOTE
+    }
   },
   methods: {
     assignNotes () {}

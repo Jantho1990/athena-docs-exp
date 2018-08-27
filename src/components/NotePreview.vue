@@ -1,11 +1,6 @@
 <template>
   <div class="note">
-    <delete-button
-      :action="action"
-      :id="id"
-    >
-      Delete Note
-    </delete-button>
+    <slot name="action-buttons"></slot>
     <router-link :to="`/notes/${id}`">
       <h3>{{ title }}</h3>
     </router-link>

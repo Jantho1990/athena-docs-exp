@@ -14,13 +14,16 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { DELETE_CODEX } from '../../store'
 import CodexPreview from '../CodexPreview'
 import CodexForm from '../forms/CodexForm'
+import DeleteButton from '../DeleteButtonVuex'
 
 export default {
   components: {
     CodexPreview,
-    CodexForm
+    CodexForm,
+    DeleteButton
   },
   computed: {
     ...mapGetters([
@@ -29,7 +32,9 @@ export default {
     ])
   },
   data () {
-    return {}
+    return {
+      deleteAction: DELETE_CODEX
+    }
   },
   methods: {
     assignNotes () {}
