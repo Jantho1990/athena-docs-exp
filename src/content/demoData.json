@@ -23,17 +23,20 @@
         {
             "id": 1,
             "title": "snarglethorp food",
-            "content": "Snarglethorps like food"
+            "content": "Snarglethorps like food",
+            "codices": [2]
         },
         {
             "id": 2,
             "title": "snarglethorp climate",
-            "content": "Oceanic climate"
+            "content": "Oceanic climate",
+            "codices": [2]
         },
         {
             "id": 3,
             "title": "snargs and bobs",
-            "content": "Snarglethorps don't like to play with Biggibobs"
+            "content": "Snarglethorps don't like to play with Biggibobs",
+            "codices": [2, 3]
         }
     ]
 }
