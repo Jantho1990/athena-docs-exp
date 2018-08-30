@@ -21,9 +21,13 @@ const DETACH_NOTE = 'DETACH_NOTE'
 export const ADD_CODEX = 'ADD_CODEX'
 export const EDIT_CODEX = 'EDIT_CODEX'
 export const DELETE_CODEX = 'DELETE_CODEX'
+export const ASSOCIATE_CODEX = 'ASSOCIATE_CODEX'
+export const DISSOCIATE_CODEX = 'DISSOCIATE_CODEX'
 export const ADD_NOTE = 'ADD_NOTE'
 export const EDIT_NOTE = 'EDIT_NOTE'
 export const DELETE_NOTE = 'DELETE_NOTE'
+export const ASSOCIATE_NOTE = 'ASSOCIATE_NOTE'
+export const DISSOCIATE_NOTE = 'DISSOCIATE_NOTE'
 
 const store = new Vuex.Store({
   state: {
@@ -173,13 +177,17 @@ const store = new Vuex.Store({
       state.codices = [ ...codices ]
     },
     [DETACH_NOTE] (state, payload) {
-      const { id } = payload
+      const { id, codexId = null } = payload
 
       state.codices = state.codices.map(codex => {
-        return {
-          ...codex,
-          notes: codex.notes ? codex.notes.filter(c => c !== id) : []
+        if (codexId === null || codex.id === codexId) {
+          return {
+            ...codex,
+            notes: codex.notes ? codex.notes.filter(c => c !== id) : []
+          }
         }
+
+        return codex
       })
     }
   },
@@ -226,6 +234,22 @@ const store = new Vuex.Store({
       if (id) {
         commit(DESTROY_NOTE, { id })
         commit(DETACH_NOTE, { id })
+      }
+    },
+    [ASSOCIATE_CODEX] ({ commit }, payload) {
+      //
+    },
+    [ASSOCIATE_NOTE] ({ commit }, payload) {
+      //
+    },
+    [DISSOCIATE_CODEX] ({ commit }, payload) {
+      //
+    },
+    [DISSOCIATE_NOTE] ({ commit }, payload) {
+      const { id, codexId } = payload
+
+      if (id && codexId) {
+        commit(DETACH_NOTE, { id, codexId })
       }
     }
   }

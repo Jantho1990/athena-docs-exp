@@ -8,7 +8,13 @@
       >
         <NotePreview v-bind="note">
           <template slot="action-buttons">
-            <button>Placeholder Remove Note</button>
+            <dissociate-button
+              :action="action"
+              :codexId="codexId"
+              :id="note.id"
+            >
+              Remove Note From Codex
+            </dissociate-button>
           </template>
         </NotePreview>
       </li>
@@ -17,14 +23,25 @@
 </template>
 
 <script>
+import { DISSOCIATE_NOTE } from '../store'
+import DissociateButton from './DissociateButtonVuex'
 import NotePreview from './NotePreview'
 
 export default {
   name: 'NotesContainer',
   components: {
+    DissociateButton,
     NotePreview
   },
+  data () {
+    return {
+      action: DISSOCIATE_NOTE
+    }
+  },
   props: {
+    codexId: {
+      type: Number
+    },
     notes: {
       type: Array,
       default () {

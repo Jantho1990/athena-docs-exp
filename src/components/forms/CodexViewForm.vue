@@ -27,6 +27,7 @@
       </div>
       <NotesContainer
         class="codex-notes"
+        :codexId="id"
         :notes="notes"
       />
     </div>
