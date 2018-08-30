@@ -11,24 +11,40 @@
         <h2>{{ title }}</h2>
         <p>{{ content }}</p>
       </div>
-      <NotesContainer
-        class="codex-notes"
-        :codexId="id"
-        :notes="notes"
-      />
+      <div class="codex-notes">
+        <NotesContainer
+          :codexId="id"
+          :notes="notes"
+        />
+        <attach-note-form
+          :attachedNotes="attachedNotes"
+          :codexId="id"
+          :notes="allNotes"
+        />
+      </div>
     </div>
 </template>
 
 <script>
 import { DELETE_CODEX } from '../store'
+import AttachNoteForm from './forms/AttachNoteForm'
 import DeleteButton from './DeleteButtonVuex'
 import NotesContainer from './NotesContainer'
 
 export default {
   name: 'CodexView',
   components: {
+    AttachNoteForm,
     DeleteButton,
     NotesContainer
+  },
+  computed: {
+    allNotes () {
+      return this.$store.getters.notes
+    },
+    attachedNotes () {
+      return this.notes.map(note => note.id)
+    }
   },
   data () {
     return {

@@ -168,8 +168,8 @@ const store = new Vuex.Store({
       }
 
       if (codexId !== null) {
-        const c = codexId
-        codices[c] = modifyCodex(c)
+        const c = codices.findIndex(ct => ct.id === codexId)
+        codices[c] = { ...modifyCodex(c) }
       } else {
         note.codices.forEach(cId => {
           const c = codices.findIndex(ct => ct.id === cId)
@@ -182,7 +182,7 @@ const store = new Vuex.Store({
     [DETACH_NOTE] (state, payload) {
       const { id, codexId = null } = payload
 
-      state.codices = state.codices.map(codex => {
+      const codices = state.codices.map(codex => {
         if (codexId === null || codex.id === codexId) {
           return {
             ...codex,
@@ -192,6 +192,8 @@ const store = new Vuex.Store({
 
         return codex
       })
+
+      state.codices = [ ...codices ]
     }
   },
   actions: {
