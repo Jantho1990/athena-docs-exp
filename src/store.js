@@ -158,21 +158,24 @@ const store = new Vuex.Store({
       state.notes = state.notes.filter(note => note.id !== id)
     },
     [ATTACH_NOTE] (state, payload) {
-      const { note } = payload
-      const { codices, noteId: id } = state
+      const { codices, noteId } = state
+      const { note, note: { id = noteId }, codexId = null } = payload
 
-      note.codices.forEach(codexId => {
-        const c = codices.findIndex(ct => ct.id === codexId)
-        if (codices[c].notes.findIndex(noteId => noteId === id) === -1) {
-          codices[c] = {
-            ...codices[c],
-            notes: [
-              ...codices[c].notes,
-              id
-            ]
-          }
-        }
-      })
+      const modifyCodex = c => {
+        return codices[c].notes.findIndex(noteId => noteId === id) === -1
+          ? { ...codices[c], notes: [ ...codices[c].notes, id ] }
+          : codices[c]
+      }
+
+      if (codexId !== null) {
+        const c = codexId
+        codices[c] = modifyCodex(c)
+      } else {
+        note.codices.forEach(cId => {
+          const c = codices.findIndex(ct => ct.id === cId)
+          codices[c] = modifyCodex(c)
+        })
+      }
 
       state.codices = [ ...codices ]
     },
@@ -200,7 +203,7 @@ const store = new Vuex.Store({
         commit(ATTACH_CODEX, { codex: { ...codex } })
       }
     },
-    [ADD_NOTE] ({ commit }, payload) {
+    [ADD_NOTE] ({ commit, state }, payload) {
       const { note } = payload
       if (note) {
         commit(INCREMENT_ID, 'note')
@@ -240,7 +243,11 @@ const store = new Vuex.Store({
       //
     },
     [ASSOCIATE_NOTE] ({ commit }, payload) {
-      //
+      const { id, codexId } = payload
+
+      if (id && codexId) {
+        commit(ATTACH_NOTE, { note: { id }, codexId })
+      }
     },
     [DISSOCIATE_CODEX] ({ commit }, payload) {
       //
