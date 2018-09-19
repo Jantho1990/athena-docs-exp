@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { DELETE_CODEX } from '../store'
+import { DELETE_CODEX } from '../store/actions'
 import DeleteButton from './DeleteButtonVuex'
 
 export default {

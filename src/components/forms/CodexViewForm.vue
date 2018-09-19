@@ -43,7 +43,7 @@
 import {
   DELETE_CODEX,
   EDIT_CODEX
-} from '../../store'
+} from '../../store/actions'
 import AttachNoteForm from '../forms/AttachNoteForm'
 import DeleteButton from '../DeleteButtonVuex'
 import NotesContainer from '../NotesContainer'

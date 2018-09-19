@@ -14,7 +14,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { DELETE_CODEX } from '../../store'
+import { DELETE_CODEX } from '../../store/actions'
 import CodexPreview from '../CodexPreview'
 import CodexForm from '../forms/CodexForm'
 import DeleteButton from '../DeleteButtonVuex'

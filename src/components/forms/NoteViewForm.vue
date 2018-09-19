@@ -31,7 +31,7 @@
 import {
   DELETE_NOTE,
   EDIT_NOTE
-} from '../../store'
+} from '../../store/actions'
 import DeleteButton from '../DeleteButtonVuex'
 
 export default {

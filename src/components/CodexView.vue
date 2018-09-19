@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { DELETE_CODEX } from '../store'
+import { DELETE_CODEX } from '../store/actions'
 import AttachNoteForm from './forms/AttachNoteForm'
 import DeleteButton from './DeleteButtonVuex'
 import NotesContainer from './NotesContainer'

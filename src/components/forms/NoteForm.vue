@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { ADD_NOTE } from '../../store'
+import { ADD_NOTE } from '../../store/actions'
 export default {
   name: 'NoteForm',
   data () {

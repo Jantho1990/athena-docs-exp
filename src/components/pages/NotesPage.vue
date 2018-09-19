@@ -21,7 +21,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { DELETE_NOTE } from '../../store'
+import { DELETE_NOTE } from '../../store/actions'
 import DeleteButton from '../DeleteButtonVuex'
 import NoteForm from '../forms/NoteForm'
 import NotePreview from '../NotePreview'

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { DELETE_NOTE } from '../store'
+import { DELETE_NOTE } from '../store/actions'
 import DeleteButton from './DeleteButtonVuex'
 
 export default {

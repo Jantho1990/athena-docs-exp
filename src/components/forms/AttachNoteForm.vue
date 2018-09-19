@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { ASSOCIATE_NOTE } from '../../store'
+import { ASSOCIATE_NOTE } from '../../store/actions'
 
 export default {
   name: 'AttachNoteForm',

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { DISSOCIATE_NOTE } from '../store'
+import { DISSOCIATE_NOTE } from '../store/actions'
 import DissociateButton from './DissociateButtonVuex'
 import NotePreview from './NotePreview'
 

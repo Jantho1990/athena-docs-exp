@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { ADD_CODEX } from '../../store'
+import { ADD_CODEX } from '../../store/actions'
 export default {
   name: 'CodexForm',
   data () {
