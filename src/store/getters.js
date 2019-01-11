@@ -1,4 +1,7 @@
 export default {
+  all: state => {
+    return { ...state }
+  },
   codices: state => state.codices.map(codex => {
     return {
       ...codex,

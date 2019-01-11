@@ -15,13 +15,19 @@
     <main>
       <h1>This is the container for the AthenaDocs demo</h1>
       <router-view></router-view>
+      <export-button></export-button>
     </main>
   </div>
 </template>
 
 <script>
+import ExportButton from './buttons/ExportButton'
+
 export default {
-  name: 'MainContainer'
+  name: 'MainContainer',
+  components: {
+    ExportButton
+  }
 }
 </script>
 
